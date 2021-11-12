@@ -32,6 +32,8 @@ namespace DAL
                 comand.Parameters.AddWithValue("@caracteristicas_producto", producto.CaracteristicasProdcuto);
                 comand.Parameters.AddWithValue("@imagen_principal", producto.ImagenPrincipal);
                 GuardarImagenesDeLosProductos(producto.ImagenesProducto, producto.IdProducto);
+
+                comand.ExecuteNonQuery();
             }
         }
 
@@ -70,6 +72,42 @@ namespace DAL
             return productos;
         }
 
+        public void EliminarProducto(string idProducto)
+        {
+            using (var comando = _connection.CreateCommand())
+            {
+                comando.CommandText = "DELETE FROM PRODUCTO WHERE id_producto = @id_producto";
+                comando.Parameters.AddWithValue("@id_producto", idProducto);
+                EliminarImagenesDelProducto(idProducto);
+                EliminarTallasDelProducto(idProducto);
+
+                comando.ExecuteNonQuery();
+            }
+
+        }
+
+        private void EliminarImagenesDelProducto(string idProducto)
+        {
+            using (var comando = _connection.CreateCommand())
+            {
+                comando.CommandText = "DELETE FROM ASIGNACION_IMAGENES WHERE id_producto = @id_producto";
+                comando.Parameters.AddWithValue("@id_producto", idProducto);
+
+                comando.ExecuteNonQuery();
+            }
+        }
+
+        private void EliminarTallasDelProducto(string idProducto)
+        {
+            using (var comando = _connection.CreateCommand())
+            {
+                comando.CommandText = "DELETE FROM ASIGNACION_TALLAS WHERE id_producto = @id_producto";
+                comando.Parameters.AddWithValue("@id_producto", idProducto);
+
+                comando.ExecuteNonQuery();
+            }
+        }
+
         private void GuardarTallasDeLosProductos(List<string> tallas, string idProducto)
         {
             using (var comand = _connection.CreateCommand())
@@ -78,7 +116,9 @@ namespace DAL
                 {
                     comand.CommandText = "INSERT INTO ASIGNACION_TALLAS (id_producto, tallas) VALUES (@id_producto, @tallas)";
                     comand.Parameters.AddWithValue("@id_producto", idProducto);
-                    comand.Parameters.AddWithValue("@tallas", item);    
+                    comand.Parameters.AddWithValue("@tallas", item);
+
+                    comand.ExecuteNonQuery();
                 }
             }
         }
@@ -91,7 +131,9 @@ namespace DAL
                 {
                     comand.CommandText = "INSERT INTO ASIGNACION_IMAGENES (id_producto, imagen_producto) VALUES (@id_producto, @imagen_producto)";
                     comand.Parameters.AddWithValue("@id_producto", idProducto);
-                    comand.Parameters.AddWithValue("@imagen_producto", item);    
+                    comand.Parameters.AddWithValue("@imagen_producto", item);
+
+                    comand.ExecuteNonQuery();
                 }
             }
         }
