@@ -26,5 +26,6 @@ namespace DAL
                 comand.ExecuteNonQuery();             
             }
         }
+        //da
     }
 }
