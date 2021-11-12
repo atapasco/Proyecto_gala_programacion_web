@@ -1,0 +1,15 @@
+C:\Users\Andres\Desktop\proyecto tienda de ropa GALA\DAL\bin\Debug\net5.0\DAL.deps.json
+C:\Users\Andres\Desktop\proyecto tienda de ropa GALA\DAL\bin\Debug\net5.0\DAL.dll
+C:\Users\Andres\Desktop\proyecto tienda de ropa GALA\DAL\bin\Debug\net5.0\ref\DAL.dll
+C:\Users\Andres\Desktop\proyecto tienda de ropa GALA\DAL\bin\Debug\net5.0\DAL.pdb
+C:\Users\Andres\Desktop\proyecto tienda de ropa GALA\DAL\bin\Debug\net5.0\Entity.dll
+C:\Users\Andres\Desktop\proyecto tienda de ropa GALA\DAL\bin\Debug\net5.0\Entity.pdb
+C:\Users\Andres\Desktop\proyecto tienda de ropa GALA\DAL\obj\Debug\net5.0\DAL.csproj.AssemblyReference.cache
+C:\Users\Andres\Desktop\proyecto tienda de ropa GALA\DAL\obj\Debug\net5.0\DAL.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Andres\Desktop\proyecto tienda de ropa GALA\DAL\obj\Debug\net5.0\DAL.AssemblyInfoInputs.cache
+C:\Users\Andres\Desktop\proyecto tienda de ropa GALA\DAL\obj\Debug\net5.0\DAL.AssemblyInfo.cs
+C:\Users\Andres\Desktop\proyecto tienda de ropa GALA\DAL\obj\Debug\net5.0\DAL.csproj.CoreCompileInputs.cache
+C:\Users\Andres\Desktop\proyecto tienda de ropa GALA\DAL\obj\Debug\net5.0\DAL.csproj.CopyComplete
+C:\Users\Andres\Desktop\proyecto tienda de ropa GALA\DAL\obj\Debug\net5.0\DAL.dll
+C:\Users\Andres\Desktop\proyecto tienda de ropa GALA\DAL\obj\Debug\net5.0\ref\DAL.dll
+C:\Users\Andres\Desktop\proyecto tienda de ropa GALA\DAL\obj\Debug\net5.0\DAL.pdb
