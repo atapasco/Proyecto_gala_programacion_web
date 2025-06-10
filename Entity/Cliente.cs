@@ -21,5 +21,9 @@ namespace Entity
             this.Genero = genero;
             this.FechaNacimiento = fechaNacimiento;
         }
+        public Cliente()
+        {
+
+        }
     }
 }

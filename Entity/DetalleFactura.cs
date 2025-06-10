@@ -14,5 +14,9 @@ namespace Entity
             this.ValorTotal = producto.PrecioProducto * cantidadProducto;
             this.ProductoDevuelto = false;
         } 
+        public DetalleFactura()
+        {
+
+        }
     }
 }

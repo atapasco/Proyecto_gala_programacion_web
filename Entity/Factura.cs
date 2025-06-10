@@ -25,6 +25,10 @@ namespace Entity
             this.ValorTotalConIva = SacarValorTotalConIva(detallesFactura);
             this.DetallesFactura = detallesFactura;
         }
+        public Factura()
+        {
+
+        }
 
         public double SacarValorTotalSinIva(List<DetalleFactura> detallesFactura)
         {

@@ -72,6 +72,39 @@ namespace DAL
             return productos;
         }
 
+        public List<Producto> ConsultarProductoFavoritosCliente(string idCliente)
+        {
+            List<Producto> productos = new List<Producto>();
+            using (var comando = _connection.CreateCommand())
+            {
+                comando.CommandText = "SELECT categoria, id_producto, talla, detalle_producto, precio_producto, caracteristicas_producto, imagen_principal" +
+                                        "FROM PRODUCTO,PRODUCTOS_FAVORITOS"+ 
+                                        "WHERE PRODUCTO.id_producto=PRODUCTOS_FAVORITOS.id_producto AND PRODUCTOS_FAVORITOS.id_cliente = @id_cliente";
+                comando.Parameters.AddWithValue("@id_cliente", idCliente);
+                var lector = comando.ExecuteReader();
+                if (lector.HasRows)
+                {
+                    while (lector.Read())
+                    {
+                        Producto producto = new Producto();
+                        producto.Categoria = lector.GetString(0);
+                        producto.IdProducto = lector.GetString(1);
+                        //2
+                        producto.Talla = ConsultarTallasDeLosProductos(lector.GetString(1));
+                        producto.DetalleProducto = lector.GetString(3);
+                        producto.PrecioProducto = lector.GetDouble(4);
+                        producto.CaracteristicasProdcuto = lector.GetString(5);
+                        producto.ImagenPrincipal = ConvertirUnStreamABytes(lector.GetStream(6));
+                        //7
+                        producto.ImagenesProducto = ConsultarImagenesDeLosProductos(lector.GetString(1));
+
+                        productos.Add(producto);
+                    }
+                }
+                lector.Close();
+            }
+            return productos;
+        }
         public void EliminarProducto(string idProducto)
         {
             using (var comando = _connection.CreateCommand())
@@ -176,6 +209,38 @@ namespace DAL
                 lector.Close();
             }
             return imagenes;
+        }
+        
+        public Producto ConsultarProductoPorId(string idProducto)
+        {
+            Producto producto = new Producto();
+            using (var comando = _connection.CreateCommand())
+            {
+                
+                comando.CommandText = "SELECT categoria, id_producto, talla, detalle_producto, precio_producto, caracteristicas_producto, imagen_principal" +
+                                        "FROM PRODUCTO WHERE id_producto = @id_producto";
+                comando.Parameters.AddWithValue("@id_producto", idProducto);
+                var lector = comando.ExecuteReader();
+                if (lector.HasRows)
+                {
+                    while (lector.Read())
+                    {
+                        producto.Categoria = lector.GetString(0);
+                        producto.IdProducto = lector.GetString(1);
+                        //2
+                        producto.Talla = ConsultarTallasDeLosProductos(lector.GetString(1));
+                        producto.DetalleProducto = lector.GetString(3);
+                        producto.PrecioProducto = lector.GetDouble(4);
+                        producto.CaracteristicasProdcuto = lector.GetString(5);
+                        producto.ImagenPrincipal = ConvertirUnStreamABytes(lector.GetStream(6));
+                        //7
+                        producto.ImagenesProducto = ConsultarImagenesDeLosProductos(lector.GetString(1));
+                    }
+                }
+                lector.Close();
+                
+                return producto;
+            }
         }
 
         private byte[] ConvertirUnStreamABytes(Stream imagen)
